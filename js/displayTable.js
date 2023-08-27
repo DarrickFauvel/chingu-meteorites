@@ -19,6 +19,7 @@ function renderTableHeader(table) {
   const thead = table.querySelector("thead")
   thead.innerHTML = "<tr></tr>"
 
+  // Loop over header properties in the headers object
   for (const headerProperty in headers) {
     const th = document.createElement("th")
     th.textContent = headers[headerProperty]
@@ -39,17 +40,24 @@ async function renderTableBody(table) {
 
     tbody.innerHTML = ""
 
+    // Loop over meteorites array of meteorite objects
     for (const meteorite of meteorites) {
       const tr = document.createElement("tr")
+      // Loop over header properties in the headers object
       for (const headerProperty in headers) {
+        // Loop over meteorite properties in the meteorite object
         for (const meteoriteProperty in meteorite) {
+          // Check if both header property and meteorite property are a match
           if (headerProperty === meteoriteProperty) {
             const td = document.createElement("td")
+            // Check for geolocation propeerty
             if (headerProperty === "geolocation") {
+              // Insert geolocation cell data
               td.textContent = `
                 Latitude: ${meteorite.geolocation.latitude}\n
                 Longitude: ${meteorite.geolocation.longitude}`
             } else {
+              // Insert meteorite cell data
               td.textContent = `${meteorite[meteoriteProperty]}`
             }
             tr.appendChild(td)
@@ -62,7 +70,7 @@ async function renderTableBody(table) {
     tbody.innerHTML = `
       <tr>
         <td colspan=${Object.keys(headers).length}>
-        Sorry! There was a problem fetching the data.
+          Sorry! There was a problem fetching the data.
         </td>
       </tr>`
     console.error("There was a problem with your fetch operation:", error)
