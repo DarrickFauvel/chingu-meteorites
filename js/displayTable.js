@@ -46,7 +46,9 @@ async function renderTableBody(table) {
           if (headerProperty === meteoriteProperty) {
             const td = document.createElement("td")
             if (headerProperty === "geolocation") {
-              td.textContent = `Latitude: ${meteorite.geolocation.latitude}\nLongitude: ${meteorite.geolocation.longitude}`
+              td.textContent = `
+                Latitude: ${meteorite.geolocation.latitude}\n
+                Longitude: ${meteorite.geolocation.longitude}`
             } else {
               td.textContent = `${meteorite[meteoriteProperty]}`
             }
@@ -57,9 +59,12 @@ async function renderTableBody(table) {
       tbody.appendChild(tr)
     }
   } catch (error) {
-    tbody.innerHTML = `<tr><td colspan=${
-      Object.keys(headers).length
-    }>Sorry! There was a problem fetching the data.</td></tr>`
+    tbody.innerHTML = `
+      <tr>
+        <td colspan=${Object.keys(headers).length}>
+        Sorry! There was a problem fetching the data.
+        </td>
+      </tr>`
     console.error("There was a problem with your fetch operation:", error)
   }
 }
