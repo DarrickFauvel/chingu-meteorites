@@ -12,6 +12,79 @@
   </head>
   <body>
     <h1 id="head">Meteorites</h1>
+
+    <section class="search">
+      <div class="control-wrapper">
+        <label for="search-type">Search by</label>
+        <select id="search-type">
+          <option value="">--Choose an option--</option>
+          <option value="name">Name</option>
+          <option value="year">Year of strike</option>
+          <option value="composition">Composition (recclass)</option>
+          <option value="mass">Mass range</option>
+        </select>
+      </div>
+
+      <div id="name-input-control" class="input-control">
+        <div class="control-wrapper">
+          <label for="name-input">Name</label>
+          <input
+            type="text"
+            id="name-input"
+            placeholder="Enter name"
+            autocomplete="no"
+          />
+        </div>
+      </div>
+
+      <div id="year-input-control" class="input-control">
+        <div class="control-wrapper">
+          <label for="year-input">Year of strike</label>
+          <input
+            type="text"
+            id="year-input"
+            placeholder="Enter year"
+            autocomplete="no"
+          />
+        </div>
+      </div>
+
+      <div id="composition-input-control" class="input-control">
+        <div class="control-wrapper">
+          <label for="composition-input">Composition</label>
+          <input
+            type="text"
+            id="composition-input"
+            placeholder="Enter composition"
+            autocomplete="no"
+          />
+        </div>
+      </div>
+
+      <div id="mass-input-control" class="input-control">
+        <div class="control-wrapper">
+          <label for="mass-input">Mass</label>
+          <div class="flex">
+            <input
+              type="text"
+              id="mass-input-low"
+              placeholder="Low"
+              autocomplete="no"
+            />
+            &nbsp;to&nbsp;
+            <input
+              type="text"
+              id="mass-input-high"
+              placeholder="High"
+              autocomplete="no"
+            />
+          </div>
+        </div>
+      </div>
+
+      <button id="search-btn" class="button-control">Search</button>
+    </section>
+
     <table>
       <thead></thead>
       <tbody></tbody>

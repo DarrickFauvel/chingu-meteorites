@@ -1,5 +1,3 @@
-const API_URL = "https://data.nasa.gov/resource/gh4g-9sfh.json"
-
 /* These headers can be reordered or individually omitted, 
   and the table will dynamically display accordingly */
 const headers = {
@@ -27,59 +25,59 @@ function renderTableHeader(table) {
   }
 }
 
-async function renderTableBody(table) {
+async function renderTableBody(state, table) {
   const tbody = table.querySelector("tbody")
+
+  if (state.error.isError) {
+    tbody.innerHTML = `<tr><td class="error" colspan=${
+      Object.keys(headers).length
+    }>${state.error.message}</td></tr>`
+    return
+  }
+
   tbody.innerHTML = "<tr><td>Loading...</td></tr>"
 
-  try {
-    const response = await fetch(API_URL)
-    if (!response.ok) {
-      throw new Error("Network response was not OK")
-    }
-    const meteorites = await response.json()
+  console.log(state.type)
+  let data
+  if (state.type === undefined) {
+    data = state.allData
+  } else {
+    data = state.searchResults
+  }
 
-    tbody.innerHTML = ""
+  tbody.innerHTML = ""
 
-    // Loop over meteorites array of meteorite objects
-    for (const meteorite of meteorites) {
-      const tr = document.createElement("tr")
-      // Loop over header properties in the headers object
-      for (const headerProperty in headers) {
-        // Loop over meteorite properties in the meteorite object
-        for (const meteoriteProperty in meteorite) {
-          // Check if both header property and meteorite property are a match
-          if (headerProperty === meteoriteProperty) {
-            const td = document.createElement("td")
-            // Check for geolocation propeerty
-            if (headerProperty === "geolocation") {
-              // Insert geolocation cell data
-              td.textContent = `
-                Latitude: ${meteorite.geolocation.latitude}\n
-                Longitude: ${meteorite.geolocation.longitude}`
-            } else {
-              // Insert meteorite cell data
-              td.textContent = `${meteorite[meteoriteProperty]}`
-            }
-            tr.appendChild(td)
+  // Loop over data array of meteorite objects
+  for (const meteorite of data) {
+    const tr = document.createElement("tr")
+    // Loop over header properties in the headers object
+    for (const headerProperty in headers) {
+      // Loop over meteorite properties in the meteorite object
+      for (const meteoriteProperty in meteorite) {
+        // Check if both header property and meteorite property are a match
+        if (headerProperty === meteoriteProperty) {
+          const td = document.createElement("td")
+          // Check for geolocation propeerty
+          if (headerProperty === "geolocation") {
+            // Insert geolocation cell data
+            td.textContent = `
+                  Latitude: ${meteorite.geolocation.latitude}\n
+                  Longitude: ${meteorite.geolocation.longitude}`
+          } else {
+            // Insert meteorite cell data
+            td.textContent = `${meteorite[meteoriteProperty]}`
           }
+          tr.appendChild(td)
         }
       }
-      tbody.appendChild(tr)
     }
-  } catch (error) {
-    tbody.innerHTML = `
-      <tr>
-        <td colspan=${Object.keys(headers).length}>
-          Sorry! There was a problem fetching the data.
-        </td>
-      </tr>`
-    console.error("There was a problem with your fetch operation:", error)
+    tbody.appendChild(tr)
   }
 }
 
-function displayTable(table) {
+function displayTable(state, table) {
   renderTableHeader(table)
-  renderTableBody(table)
+  renderTableBody(state, table)
 }
 
 export default displayTable

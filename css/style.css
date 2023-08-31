@@ -9,6 +9,44 @@ h1 {
   font-family: "Amulya", sans-serif;
 }
 
+/* Search */
+select,
+input,
+button {
+  font-size: 1rem;
+}
+
+button {
+  height: 2em;
+}
+
+label {
+  font-weight: bold;
+}
+
+.search {
+  display: flex;
+  align-items: flex-end;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+.input-control,
+.button-control {
+  display: none;
+}
+
+.control-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.flex {
+  display: flex;
+}
+
+/* Table display */
 table {
   width: 100%;
   border: 1px solid rgb(153, 9, 9);
