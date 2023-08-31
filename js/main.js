@@ -90,7 +90,6 @@ async function main() {
   })
 
   searchBtn.addEventListener("click", () => {
-    console.log(inputs)
     if (inputs.type === "name") {
       inputs.name = nameInput.value
       console.log(`filter meteorites by: ${inputs.name}`)
