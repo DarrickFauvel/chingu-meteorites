@@ -24,7 +24,7 @@ label {
   font-weight: bold;
 }
 
-.search {
+.search form {
   display: flex;
   align-items: flex-end;
   gap: 1em;
@@ -47,9 +47,21 @@ label {
 }
 
 /* Table display */
+#graph {
+  max-height: 80vh;
+  overflow: scroll;
+}
+
 table {
+  position: relative;
   width: 100%;
-  border: 1px solid rgb(153, 9, 9);
+  /* border: 1px solid rgb(153, 9, 9); */
+  border-collapse: collapse;
+}
+
+thead {
+  position: sticky;
+  top: 0;
 }
 
 th,
@@ -60,4 +72,8 @@ td {
 th {
   background-color: rgb(255, 221, 221);
   text-align: start;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f5f5f5;
 }
