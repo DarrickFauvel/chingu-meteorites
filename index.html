@@ -29,7 +29,7 @@
           <div class="control-wrapper">
             <label for="name-input">Name</label>
             <input
-              type="text"
+              type="search"
               id="name-input"
               placeholder="example: aca"
               autocomplete="no"
@@ -40,7 +40,7 @@
           <div class="control-wrapper">
             <label for="year-input">Year of strike</label>
             <input
-              type="text"
+              type="search"
               id="year-input"
               placeholder="example: 1880"
               autocomplete="no"
@@ -51,7 +51,7 @@
           <div class="control-wrapper">
             <label for="composition-input">Composition (recClass)</label>
             <input
-              type="text"
+              type="search"
               id="composition-input"
               placeholder="example: mar"
               autocomplete="no"
@@ -60,17 +60,18 @@
         </div>
         <div id="mass-input-control" class="input-control">
           <div class="control-wrapper">
-            <label for="mass-input">Mass (low to high)</label>
+            <label for="mass-input">Mass (grams) low to high</label>
             <div class="flex">
               <input
-                type="text"
+                type="number"
                 id="mass-input-low"
                 placeholder="example: 0"
                 autocomplete="no"
+                min="0"
               />
               &nbsp;to&nbsp;
               <input
-                type="text"
+                type="number"
                 id="mass-input-high"
                 placeholder="example: 1"
                 autocomplete="no"

@@ -5,7 +5,7 @@ export const headers = {
   id: "ID",
   nametype: "NameType",
   recclass: "recClass",
-  mass: "Mass",
+  mass: "Mass (grams)",
   fall: "Fall",
   year: "Year",
   reclat: "recLat",
