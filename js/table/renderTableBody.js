@@ -37,7 +37,9 @@ export default async function renderTableBody() {
         // Check if both header property and meteorite property are a match
         if (headerProperty === meteoriteProperty) {
           const td = document.createElement("td")
-          if (headerProperty === "year") {
+          if (headerProperty === "mass") {
+            td.textContent = new Intl.NumberFormat().format(meteorite.mass)
+          } else if (headerProperty === "year") {
             td.textContent = new Date(meteorite.year).getFullYear()
           } else if (headerProperty === "geolocation") {
             // Check for geolocation propeerty
