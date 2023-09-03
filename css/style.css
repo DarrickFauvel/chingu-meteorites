@@ -9,6 +9,14 @@ h1 {
   font-family: "Amulya", sans-serif;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+header p {
+  text-align: end;
+}
+
 /* Search */
 select,
 input,
@@ -47,15 +55,15 @@ label {
 }
 
 /* Table display */
-#graph {
-  max-height: 80vh;
+.table-wrapper {
+  max-height: 40em;
   overflow: scroll;
+  border: 1px solid brown;
 }
 
 table {
   position: relative;
   width: 100%;
-  /* border: 1px solid rgb(153, 9, 9); */
   border-collapse: collapse;
 }
 
