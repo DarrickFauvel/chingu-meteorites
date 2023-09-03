@@ -9,6 +9,14 @@ h1 {
   font-family: "Amulya", sans-serif;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+header p {
+  text-align: end;
+}
+
 /* Search */
 select,
 input,
